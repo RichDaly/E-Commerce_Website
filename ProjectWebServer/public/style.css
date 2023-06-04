@@ -1,0 +1,57 @@
+/* Styling for the container on each page, serving as a backing to the page content */
+.container-style {
+    /* box-shadow: offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 0 600px 50px rgba(10, 67, 190, 1);
+}
+
+/* styles the login forms in login.html & loginFailed.html */
+.formBox {
+    border-radius: 30px;
+    /* box-shadow: offset-x | offset-y | blur-radius | color */
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.5);
+    background: rgba(128, 128, 128, 0.2);
+    padding: 30px;
+    margin: 30px;
+}
+
+/* Sets the margin between items on shop pages.
+ * See kayaks.ejs & clothing.ejs
+ * Border and border colour adjusted using bootstrap
+ */
+.productBox {
+    margin: 10px;
+}
+
+/* addtional styling to carousel-item see homePage.ejs 
+ * fixed size to stop size adjusting depending on the image being shown. 
+ */
+.carousel-item {
+    min-height: 450px;
+    max-height: 450px;
+}
+
+/* Setting max height and width to fit to desired size.
+ * See clothing.ejs
+ */
+#clothing-img {
+    max-height: 200px;
+    max-width: 300px;
+}
+
+/* Keeps clothing images within bounds of carousel
+ * See homePage.ejs 
+ */
+#clothing-img-carousel {
+    height: 450px;
+    width: auto;
+}
+
+/* sets bottom margin checkbox in payment form in checkout.ejs */
+.form-check {
+    margin-bottom: 10px;
+}
+
+/* Keeps all items at least 30px above the footer */
+footer {
+    margin-top: 30px;
+}

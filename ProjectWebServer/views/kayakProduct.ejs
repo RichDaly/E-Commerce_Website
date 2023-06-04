@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayak Product</title>
+
+    <!-- partial including stylesheets -->
+    <%- include("partials/stylesheets.ejs") %>
+</head>
+
+<body>
+    <!-- Container-style is a custom styling, see style.css -->
+    <div class="container container-style">
+        <!-- partial includes logo and navbar -->
+        <%- include("partials/header.ejs") %>
+
+            <!-- Flex Utility justify-content-center to center content -->
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <!-- image adpapts to page (img-fluid), centered (mx-auto), visable on all page sizes (d-block) -->
+                    <img class="mx-auto d-block img-fluid" src="static/img/kayak/<%= image %>" alt="Kayak Image">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <!-- id to access element by script end of page -->
+                    <h1 id="product">Product Name: <%= name %>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2>Type: <%= type %>
+                    </h2>
+                    <!-- id to access element by script end of page -->
+                    <h2 id="price">Price: €<%= cost %>
+                    </h2>
+                    <p>
+                        <%= description %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h3>Quantity: </h3>
+                    <select class="col-2" name="quantity" id="quantity">
+                        <option value="0">0</option>
+                        <!-- Option that is selected on page load. -->
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- place holder for alert, see script end of page -->
+            <div id="liveAlertPlaceholder" class="row justify-content-center">
+                <!-- alert box position. -->
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <!-- btn-primary for blue colour and col-12 for spacing. -->
+                    <!-- addToCart() function, see script end of page. -->
+                    <button class="btn btn-primary col-12" onclick="addToCart()" id="liveAlertBtn">Add to Cart</button>
+                    <hr>
+                    <a href="kayaks"><button class="btn btn-primary col-12">Back to Kayaks</button></a>
+                </div>
+            </div>
+            <!-- partial of footer -->
+            <%- include("partials/footer.ejs") %>
+
+    </div>
+    <!-- parital including bootstrap javascript -->
+    <%- include("partials/bootstrapScript.ejs") %>
+</body>
+
+</html>
+
+<script>
+    // On click functon that adds item to cart in local storage.
+    function addToCart() {
+        // get the html by the element id.
+        let product = document.getElementById("product").innerHTML;
+        // remove the part of the string that is not needed.
+        product = product.replace("Product Name: ", "");
+
+        // get the value by the element id.
+        let quantity = document.getElementById("quantity").value;
+
+        let price = document.getElementById("price").innerHTML;
+        // remove the part of the string that is not needed.
+        price = price.replace("Price: €", "");
+
+        // object to store multiple details
+        let details = { price: price, quantity: quantity };
+        // convert object to string to store in local storage.
+        localStorage.setItem(product, JSON.stringify(details));
+    }
+
+    // Following two methods are implementing the alert function of bootstrap.
+    // https://getbootstrap.com/docs/5.3/components/alerts/
+
+    // variable for placeholder location
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+    // arrow function on using appendAlert
+    const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div'); // create a div element
+        wrapper.innerHTML = [ //place this array in that created div
+            `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join(''); // convert the array to a string
+
+        alertPlaceholder.append(wrapper); // add wrapper into placeholder location.
+    }
+
+    // variable for button with id of liveAlertBtn
+    const alertTrigger = document.getElementById('liveAlertBtn');
+    if (alertTrigger) {
+        // arrow function is button is used.
+        alertTrigger.addEventListener('click', () => {
+            // call the above arrow function of appendAlert with the message and success which changes the class
+            // and effects the colour of the alert.
+            appendAlert('Item(s) have been adding to cart!', 'success')
+        })
+    }
+
+</script>

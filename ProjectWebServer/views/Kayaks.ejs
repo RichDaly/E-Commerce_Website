@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayaks</title>
+
+    <!-- partial including stylesheets -->
+    <%- include("partials/stylesheets.ejs") %>
+</head>
+
+<body>
+    <!-- Container-style is a custom styling, see style.css -->
+    <div class="container container-style">
+        <!-- partial includes logo and navbar -->
+        <%- include("partials/header.ejs") %>
+            <!-- Flex Utility justify-content-center to center content -->
+            <div class="row justify-content-center">
+
+                <!-- scritplet tag allowing easy use of javascript within html -->
+                <% for(i=0; i < products.length; i++) { %>
+
+                    <!-- 5/12 columns for 2 items per row. primary added to border for colour and rounded. -->
+                    <!-- custom style productBox, for margin in css instead of bootstrap, see style.css -->
+                    <div class="col-5 border border-primary rounded productBox">
+                        <a href="/kayak?product=<%= products[i].ID %>">
+                            <!-- image adpapts to page (img-fluid), centered (mx-auto), visable on all page sizes (d-block) -->
+                            <img class="mx-auto img-fluid" src="static/img/kayak/<%= products[i].Image %>" alt="kayak">
+                            <p class="text-center" color="black">€<%= products[i].Cost %>
+                            </p>
+                            <!-- btn-primary for blue colour and col-12 for spacing. -->
+                            <button class="btn btn-primary col-12">
+                                <%= products[i].ProductName %>
+                            </button>
+                        </a>
+                    </div>
+                    <!-- closing of for loop -->
+                    <% } %>
+
+            </div>
+            <!-- partial of footer -->
+            <%- include("partials/footer.ejs") %>
+    </div>
+    <!-- parital including bootstrap javascript -->
+    <%- include("partials/bootstrapScript.ejs") %>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <!-- partial including stylesheets -->
+    <%- include("partials/stylesheets.ejs") %>
+</head>
+
+<body>
+    <!-- Container-style is a custom styling, see style.css -->
+    <div class="container container-style">
+        <!-- partial includes logo and navbar -->
+        <%- include("partials/header.ejs") %>
+
+
+            <!-- First Text Section -->
+            <div class="row">
+                <!-- text centered, fs to change font size, m to change margin -->
+                <div class="col text-center fs-5 m-3">
+                    <p> Welcome to Atlantic Kayaks, your premier destination for high-quality river kayaks in the
+                        breathtaking landscapes of West Ireland. Our company is passionate about providing outdoor
+                        enthusiasts with the perfect tools to explore the region's stunning rivers and waterways.
+                        <!-- Text Break -->
+                        <br><br>
+                        At Atlantic Kayaks, we understand the unique needs of kayakers, whether you're an experienced
+                        paddler or just starting out. That's why we offer a diverse range of kayaks designed to deliver
+                        exceptional performance, durability, and comfort on every adventure. Our expert team carefully
+                        selects each kayak, ensuring they meet our rigorous standards for safety and functionality.
+                        <!-- Text Break -->
+                        <br><br>
+                        Immerse yourself in the rugged beauty of the West of Ireland as you navigate crystal-clear
+                        rivers,
+                        encounter magnificent wildlife, and discover hidden gems along the way. Whether you seek
+                        thrilling
+                        whitewater experiences or tranquil scenic routes, our kayaks are meticulously crafted to enhance
+                        your journey.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Carousel: adapted from examples in bootstrap docs https://getbootstrap.com/docs/5.3/components/carousel/ -->
+            <div class="row">
+                <!-- id to controls below, dark theme and margin adjusted -->
+                <div id="carousel_products" class="carousel carousel-dark slide m-4">
+                    <!-- Each carousel has number id to match with script at the end of page 
+                        to select image displayed on load. -->
+                    <div class="carousel-inner">
+                        <div id="0" class="carousel-item">
+                            <!-- image adpapts to page (img-fluid), centered (mx-auto), visable on all page sizes (d-block),
+                                 w-80 to set width to 80 percent -->
+                            <img src="static/img/kayak/9r2.jpg" class="mx-auto img-fluid d-block w-80" alt="kayak">
+                        </div>
+                        <div id="1" class="carousel-item">
+                            <!-- clothing-img-carousel to fit photos to carousel, see style.css -->
+                            <img id="clothing-img-carousel" src="static/img/clothing/zenith.jpg"
+                                class="mx-auto img-fluid d-block w-80" alt="clothing image">
+                        </div>
+                        <div id="2" class="carousel-item">
+                            <img src="static/img/kayak/jed.jpg" class="mx-auto img-fluid d-block w-80" alt="kayak">
+                        </div>
+                        <div id="3" class="carousel-item">
+                            <img id="clothing-img-carousel" src="static/img/clothing/zenithjacket.jpg"
+                                class="mx-auto img-fluid d-block w-80" alt="clothing image">
+                        </div>
+                        <div id="4" class="carousel-item">
+                            <img src="static/img/kayak/ozone.jpg" class="mx-auto img-fluid d-block w-80" alt="kayak">
+                        </div>
+
+                    </div>
+                    <!-- Control Buttons adapted from examples in bootstrap docs 
+                        https://getbootstrap.com/docs/5.3/components/carousel/ -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel_products"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel_products"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- Second Text Section -->
+            <div class="row">
+                <!-- text centered, fs to change font size, m to change margin -->
+                <div class="col text-center fs-5">
+                    <p>We take pride in our commitment to customer satisfaction and strive to provide personalized
+                        service,
+                        guiding you to the perfect kayak that suits your needs and skill level. Additionally, we offer
+                        comprehensive resources, including instructional guides and tips, to support your kayaking
+                        endeavors.
+                        <br><br>
+                        Experience the wonder of West Ireland's waterways with Atlantic Kayaks. Start your adventure
+                        today
+                        and unlock unforgettable moments on the rivers that shape this enchanting region.
+                    </p>
+                </div>
+            </div>
+
+            <!-- partial of footer -->
+            <%- include("partials/footer.ejs") %>
+
+    </div>
+    <!-- parital including bootstrap javascript -->
+    <%- include("partials/bootstrapScript.ejs") %>
+
+</body>
+
+</html>
+
+<script>
+
+    /*
+     * Controls the random display of an image in the carousel each time that the page is loaded. 
+     * Random number generated and used to select an image.
+     */
+    let carouselStart = Math.floor(Math.random() * 5);
+    // Depending on random number select carousel image by id and add class active.
+    document.getElementById(carouselStart).classList.add("active");
+
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create User</title>
+
+    <!-- Parital of bootstrap and custom stylesheet -->
+    <%- include("partials/stylesheets.ejs") %>
+</head>
+
+<body>
+    <!-- Container-style is a custom styling, see style.css -->
+    <div class="container container-style">
+        <!-- partial includes logo and navbar -->
+        <%- include("partials/header.ejs") %>
+
+
+            <!-- Form Row -->
+            <!-- Flex Utility justify-content-center to center content -->
+            <div class="row justify-content-center">
+                <!-- Custom class formBox for styling, see style.css -->
+                <div class="col-md-6 formBox">
+                    <!-- Create User Header with class text-center for alignment -->
+                    <h1 class="text-center">Create New User</h1>
+                    <!-- text-danger/text-success for colour, ejs output value-->
+                    <h2 class="text-center text-success">
+                        <%= message %>
+                    </h2>
+                    <h2 class="text-center text-danger">
+                        <%= failMessage %>
+                    </h2>
+
+                    <!-- Form - post request -->
+                    <form method="POST" action="/submitUser">
+
+                        <!-- Form - Username -->
+                        <div>
+                            <!-- col-form-label-lg to set size of label -->
+                            <label class="col-form-label-lg" for="username">Username</label>
+                            <!-- form-control to set size within form -->
+                            <input type="text" class="form-control" id="username" name="username"
+                                placeholder="Enter Username" required>
+                        </div>
+                        <!-- Form - Password -->
+                        <div>
+                            <label class="col-form-label-lg" for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password" required>
+                        </div>
+                        <br>
+
+                        <!-- Submit Button: btn-primary for blue colour and col-12 for spacing. -->
+                        <button type="submit" class="btn btn-primary col-12">Submit</button>
+                    </form>
+
+                    <!-- Row of 12 cloumns split, p-2 to adjust padding. -->
+                    <div class="row p-2">
+                        <div class="col-5">
+                            <hr>
+                        </div>
+                        <div class="col-2 text-center">OR</div>
+                        <div class="col-5">
+                            <hr>
+                        </div>
+                    </div>
+
+                    <!-- login Button: btn-success for colour -->
+                    <a href="/login"><button class="btn btn-success col-12">Login</button></a>
+                </div>
+            </div>
+            <!-- partial of footer -->
+            <%- include("partials/footer.ejs") %>
+    </div>
+    <!-- parital including bootstrap javascript -->
+    <%- include("partials/bootstrapScript.ejs") %>
+</body>
+
+</html>

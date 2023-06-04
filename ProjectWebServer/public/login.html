@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home</title>
+
+    <!-- BootStrap Version 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Custom CSS stylesheet -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <!-- Container-style is a custom styling, see style.css -->
+    <div class="container container-style">
+        <!-- Header Logo -->
+        <!-- Flex Utility justify-content-center to center content -->
+        <div class="row justify-content-center">
+            <div class="col-md">
+                <!-- image adpapts to page (img-fluid), centered (mx-auto), visable on all page sizes (d-block) -->
+                <img width="300px" class="img-fluid mx-auto d-block" src="static/img/loginLogo.png">
+            </div>
+        </div>
+
+        <!-- Nav Bar -->
+        <!-- Combination and adaptation of examples used in bootstrap doucmentation -->
+        <!-- https://getbootstrap.com/docs/5.3/components/navbar/ -->
+        <!-- Expands dependant on screen window size, bg-primary for colour, dark for theme  -->
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Navbar</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- justify content center moves links to center -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <!-- Home Button, fs controls fontsize-->
+                        <li class="nav-item fs-5">
+                            <a class="nav-link" aria-current="page" href="home">Home</a>
+                        </li>
+                        <!-- Kayaks Button -->
+                        <li class="nav-item fs-5">
+                            <a class="nav-link" href="kayaks">Kayaks</a>
+                        </li>
+                        <!-- Clothing Button -->
+                        <li class="nav-item fs-5">
+                            <a class="nav-link" href="clothing">Clothing</a>
+                        </li>
+                        <!-- Clothing Button -->
+                        <li class="nav-item fs-5">
+                            <a class="nav-link" href="register">Register</a>
+                        </li>
+                        <!-- Checkout Button -->
+                        <li class="nav-item fs-5">
+                            <a class="nav-link" href="checkout">Checkout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Form Row -->
+        <!-- Flex Utility justify-content-center to center content -->
+        <div class="row justify-content-center">
+            <!-- Custom class formBox for styling, see style.css -->
+            <div class="col-md-6 formBox">
+
+                <!-- Login Header with class text-center for alignment -->
+                <h1 class="text-center">Login</h1>
+
+                <!-- Form - post request -->
+                <form method="POST" action="/loginsubmit">
+
+                    <!-- Form - Username -->
+                    <div>
+                        <!-- col-form-label-lg to set size of label -->
+                        <label class="col-form-label-lg" for="username">Username</label>
+                        <!-- form-control to set size within form -->
+                        <input type="text" class="form-control" id="username" name="username"
+                            placeholder="Enter your username" required>
+                    </div>
+
+                    <!-- Form - Password -->
+                    <div class="form-group">
+                        <label class="col-form-label-lg" for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter your password" required>
+                    </div>
+                    <br>
+
+                    <!-- Submit Button: btn-primary for blue colour and col-12 for spacing. -->
+                    <button type="submit" class="btn btn-primary col-12">Login</button>
+                </form>
+
+                <!-- Row of 12 cloumns split, p-2 to adjust padding. -->
+                <div class="row p-2">
+                    <div class="col-5">
+                        <hr>
+                    </div>
+                    <div class="col-2 text-center">OR</div>
+                    <div class="col-5">
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- CreateUser Button: btn-success for colour -->
+                <a href="register"><button class="btn btn-success col-12">Register</button></a>
+
+            </div>
+        </div>
+
+        <!-- Footer, bg-primary for colour -->
+        <footer class="bg-primary">
+            <!-- align text centere, fs for font size, p for padding -->
+            <div class="text-center fs-5 p-4">
+                <b>2023: Richard Daly G00246442</b>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
